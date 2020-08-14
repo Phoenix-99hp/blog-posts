@@ -10,15 +10,6 @@ const Post = ({ setCurrentPost, currentPost, setWriteComment, writeComment }) =>
     const [commentsAreActive, setCommentsAreActive] = useState(false);
     const [spinner, setSpinner] = useState(true);
 
-    // useEffect(() => {
-    //     if (commentsAreActive) {
-    //         setSpinner(true);
-    //         setTimeout(() => {
-    //             setSpinner(false);
-    //         }, 1000);
-    //     }
-    // }, [commentsAreActive])
-
     useEffect(() => {
         setTimeout(() => {
             setSpinner(false);
@@ -98,28 +89,6 @@ const Post = ({ setCurrentPost, currentPost, setWriteComment, writeComment }) =>
                 </div>
                 :
                 <NoPosts />
-        // <>
-
-        // <div className={styles.postContainer}>
-        //     <p className={`${styles.postInfo} ${styles.postTitle}`}>{currentPost.title}</p>
-        //     <p className={`${styles.postBody} ${styles.postInfo}`}> {currentPost.text}</p>
-        //     <p className={styles.postInfo}>Posted: {moment(currentPost.timestamp).format('L')}</p>
-        //     <button className={styles.prevBtn} onClick={() => prevPost()}>Previous</button>
-        //     <button className={styles.nextBtn} onClick={() => nextPost()}>Next</button>
-        //     <button className={styles.commentBtn} onClick={() => setWriteComment(!writeComment)}>Add Comment</button>
-        // </div>
-        // <button className={styles.showCommentsBtn} onClick={(e) => seeHideComments(e)}>{commentsAreActive ? "Hide Comments" : "See Comments"}</button>
-        // {
-        //     currentPost.comments.map((comment, index) => {
-        //         return (
-        //             <div className={commentsAreActive ? styles.commentsActive : styles.commentsInactive} key={index}>
-        //                 <p className={`${styles.commentInfo} ${styles.commentBody}`}>{comment.text}</p>
-        //                 <p className={`${styles.commentInfo} ${styles.paddingLast}`}><span id={styles.commentName}>{comment.name}</span> - {moment(comment.timestamp).format('L')}</p>
-        //             </div>
-        //         )
-        //     })
-        // }
-        // </>
     )
 }
 

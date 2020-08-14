@@ -6,12 +6,30 @@ import Spinner from "../Spinner";
 const Comment = ({ currentPost, writeComment, setWriteComment, setCurrentPost }) => {
 
     const [spinner, setSpinner] = useState(true);
+    const specificError = [];
 
     useEffect(() => {
         setTimeout(() => {
             setSpinner(false);
         }, 1000);
     }, [])
+
+    const validate = ({ newComment, name }) => {
+        const adjComment = newComment.trim();
+        const adjName = name.trim();
+        if ((/^[a-z0-9\s@\.\-,]+$/i.test(adjName) === false) || (adjName === " ")
+            || (adjName.length === 0)) {
+            specificError.push("/error/characters");
+            return false;
+        }
+        else if ((adjComment.length > 200) || (adjComment === " ")) {
+            specificError.push("/error/comment");
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
 
     const submitComment = (e) => {
         e.preventDefault();
@@ -20,33 +38,38 @@ const Comment = ({ currentPost, writeComment, setWriteComment, setCurrentPost })
             newComment: e.target.parentElement.previousElementSibling.value,
             name: e.target.parentElement.previousElementSibling.previousElementSibling.children[0].value
         }
-        fetch("http://localhost:3001/api/posts", {
-            method: "POST",
-            mode: "cors",
-            headers: {
-                "Content-type": "application/json"
-            },
-            body: JSON.stringify(data)
+        if (validate(data)) {
+            fetch("http://localhost:3001/api/posts", {
+                method: "POST",
+                mode: "cors",
+                headers: {
+                    "Content-type": "application/json"
+                },
+                body: JSON.stringify(data)
 
-        })
-            .then(res => {
-                return res.json();
             })
-            .then(response => {
-                if (response.updated) {
-                    setCurrentPost(response.updated);
-                    window.location.href = "/";
-                }
-                else if (response.specific) {
-                    window.location.href = response.specific;
-                }
-                else {
-                    window.location.href = "/error";
-                }
-            })
-            .catch(error => {
-                console.log(error);
-            })
+                .then(res => {
+                    return res.json();
+                })
+                .then(response => {
+                    if (response.updated) {
+                        setCurrentPost(response.updated);
+                        window.location.href = "/";
+                    }
+                    else if (response.specific) {
+                        window.location.href = response.specific;
+                    }
+                    else {
+                        window.location.href = "/error";
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+        }
+        else {
+            window.location.href = specificError[0];
+        }
     }
 
     return (
