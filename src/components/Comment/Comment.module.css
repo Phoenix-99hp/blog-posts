@@ -1,0 +1,107 @@
+.postContainer {
+    /* border: 2px solid black; */
+    max-width: 500px;
+    margin: 0 auto;
+    position: relative;
+    height: fit-content;
+    padding-bottom: 10px;
+}
+
+.postInfo {
+    padding-top: 10px;
+}
+
+.postTitle {
+    font-size: 40px;
+}
+
+.postBody {
+    font-size: 20px;
+}
+
+label {
+    width: fit-content;
+}
+
+#inputContainer {
+    margin-top: 20px;
+}
+
+#commentUser {
+    border: 1px solid rgb(118, 118, 118);
+    border-radius: 3px;
+    width: 100%;
+    max-width: 500px;
+    height: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#commentArea{
+    border: 1px solid rgb(118, 118, 118);
+    border-radius: 3px;
+    width: 100%;
+    margin-top: 20px;
+    max-width: 500px;
+    padding: 5px;
+    height: 200px;
+    resize: none;
+    font: 400 13.3333px Arial;
+}
+
+.submitCancelContainer {
+    position: relative;
+    margin: 0 auto;
+    margin-top: 20px;
+    align-self: center;
+    max-width: 500px;
+    height: 100%;
+}
+
+#submitCommentBtn{
+    position: absolute;
+    left: 0;
+    background-color: rgb(145, 231, 16);
+    border: none;
+    border-radius: 3px;
+    padding: 5px;
+    outline: none;
+    cursor: pointer;
+    width: fit-content;
+}
+
+#cancelBtn {
+    border: none;
+    border-radius: 3px;
+    padding: 5px;
+    outline: none;
+    cursor: pointer;
+    width: fit-content;
+    position: absolute;
+    right: 0;
+}
+
+.commentBtn:hover, #submitCommentBtn:hover, #cancelBtn:hover {
+    opacity: 0.8;
+}
+
+#mainContainer {
+    position: relative;
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+    /* margin-left: 10px;
+    margin-right: 10px; */
+}
+
+@media screen and (max-width: 300px) {
+    #cancelBtn, #submitCommentBtn {
+        display: block;
+        width: 100%;
+        position: relative;
+    }
+
+    #submitCommentBtn {
+        margin-bottom: 10px;
+    }
+}

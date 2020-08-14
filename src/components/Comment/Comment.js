@@ -1,0 +1,74 @@
+import React, { useState, useEffect } from 'react';
+import moment from "moment";
+import styles from "./Comment.module.css";
+import Spinner from "../Spinner";
+
+const Comment = ({ currentPost, writeComment, setWriteComment, setCurrentPost }) => {
+
+    const [spinner, setSpinner] = useState(true);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setSpinner(false);
+        }, 1000);
+    }, [])
+
+    const submitComment = (e) => {
+        e.preventDefault();
+        const data = {
+            post: currentPost._id,
+            newComment: e.target.parentElement.previousElementSibling.value,
+            name: e.target.parentElement.previousElementSibling.previousElementSibling.children[0].value
+        }
+        fetch("http://localhost:3001/api/posts", {
+            method: "POST",
+            mode: "cors",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify(data)
+
+        })
+            .then(res => {
+                return res.json();
+            })
+            .then(response => {
+                if (response.updated) {
+                    setCurrentPost(response.updated);
+                    window.location.href = "/";
+                }
+                else if (response.specific) {
+                    window.location.href = response.specific;
+                }
+                else {
+                    window.location.href = "/error";
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+
+    return (
+        spinner ?
+            <Spinner />
+            :
+            <div id={styles.mainContainer}>
+                <div className={styles.postContainer}>
+                    <p className={`${styles.postInfo} ${styles.postTitle}`}>{currentPost.title}</p>
+                    <p className={`${styles.postBody} ${styles.postInfo}`}>{currentPost.text}</p>
+                    <p className={styles.postInfo}>Posted: {moment(currentPost.timestamp).format('L')}</p>
+                </div>
+                <div id={styles.inputContainer}>
+                    <input id={styles.commentUser} placeholder={"Your Name..."} />
+                </div>
+                <textarea id={styles.commentArea} placeholder={"Your Comment..."} />
+                <div className={styles.submitCancelContainer}>
+                    <button id={styles.submitCommentBtn} onClick={(e) => { submitComment(e); setWriteComment(!writeComment); }}>Submit Comment</button>
+                    <button id={styles.cancelBtn} onClick={() => setWriteComment(!writeComment)}>Cancel</button>
+                </div>
+            </div>
+    )
+}
+
+export default Comment

@@ -1,0 +1,145 @@
+.postContainer {
+    border: 2px solid black;
+    width: 500px;
+    margin: 0 auto;
+    position: relative;
+    height: fit-content;
+    padding-bottom: 10px;
+}
+
+.commentInfo {
+    padding-top: 10px;
+}
+
+.paddingLast {
+    padding-bottom: 10px;
+}
+
+.commentsActive {
+    border: 2px solid red;
+    text-align: center;
+    width: 500px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+.commentsInactive {
+  display: none;
+}
+
+.postInfo {
+    padding-top: 10px;
+}
+
+.postTitle {
+    font-size: 40px;
+}
+
+.postBody {
+    font-size: 20px;
+}
+
+.showCommentsBtn{
+  cursor: pointer;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.prevBtn, .nextBtn {
+    position: absolute;
+    cursor: pointer;
+}
+
+.nextBtn {
+    top: 50%;
+    right: -54px;;
+    transform: translateY(-50%);
+}
+
+.prevBtn {
+    top: 50%;
+    left: -80px;
+    transform: translateY(-50%);
+}
+
+.commentBtn {
+    position: absolute;
+    bottom: 5px;
+    right: 0;
+    background-color: rgb(145, 231, 16);
+    border: none;
+    border-radius: 3px;
+    padding: 5px;
+    outline: none;
+    cursor: pointer;
+}
+
+#submitCommentBtn{
+    position: absolute;
+    left: 0;
+    background-color: rgb(145, 231, 16);
+    border: none;
+    border-radius: 3px;
+    padding: 5px;
+    outline: none;
+    cursor: pointer;
+    width: fit-content;
+}
+
+#cancelBtn {
+    border: none;
+    border-radius: 3px;
+    padding: 5px;
+    outline: none;
+    cursor: pointer;
+    width: fit-content;
+    position: absolute;
+    right: 0;
+}
+
+.commentBtn:hover, #submitCommentBtn:hover, #cancelBtn:hover{
+    opacity: 0.8;
+}
+
+.commentTitle {
+    font-size: 25px;
+}
+
+.commentBody {
+    font-size: 18px;
+}
+
+#commentArea{
+    margin-top: 10px;
+    width: 490px;
+    padding: 5px;
+    height: 200px;
+    resize: none;
+}
+
+.submitCancelContainer {
+    margin-top: 10px;
+    align-self: center;
+    width: 100%;
+}
+
+#commentUser {
+    width: 70%;
+    height: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+label {
+    width: fit-content;
+}
+
+#inputContainer {
+    margin-top: 10px;
+}
+
+span {
+     color: rgb(36, 158, 240);
+}
