@@ -1,5 +1,4 @@
 .postContainer {
-    /* border: 2px solid black; */
     max-width: 500px;
     margin: 0 auto;
     position: relative;
@@ -27,7 +26,6 @@
     outline: none;
     position: absolute;
     cursor: pointer;
-    /* border: none; */
     padding: 5px;
     margin: 0;
     width: fit-content;
@@ -36,24 +34,17 @@
 .nextBtn {
     top: 0;
     right: 0;
-    /* transform: translateY(-50%); */
 }
 
 .prevBtn {
     top: 0;
     left: 0;
-    /* transform: translateY(-50%); */
 }
 
 .commentBtn {
-
     position: relative;
     margin-top: 20px;
     width: 50%;
-
-    /* position: absolute; */
-    /* bottom: 0;
-    right: 0; */
     background-color: rgb(145, 231, 16);
     border: none;
     border-radius: 10px;
@@ -103,7 +94,6 @@
 }
 
 #mainContainer {
-    /* display: flex; */
     position: relative;
     text-align: center;
     justify-content: center;
