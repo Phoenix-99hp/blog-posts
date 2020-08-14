@@ -14,20 +14,18 @@ const Error = ({ specific }) => {
     }, [])
 
     return (
-        spinner ?
-            <Layout>
+        <Layout>
+            {spinner ?
                 <Spinner />
-            </Layout>
-            :
-            <Layout>
+                :
                 <div id={styles.errorContainer}>
                     <p id={styles.errorBody}><span id={styles.error}>Error: </span>{specific === "comment" ? "Comments must be 200 characters or less, and may not be empty." :
                         specific === "characters" ? "The Name field must not be blank, and only the characters a-z 0-9 @ . - are allowed as part of the Name field." :
                             "Something went wrong."}
                     </p>
                     <Link className={styles.link} to="/">Back</Link>
-                </div>
-            </Layout>
+                </div>}
+        </Layout>
     )
 }
 
