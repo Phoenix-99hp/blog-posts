@@ -2,7 +2,7 @@
   "name": "blog-posts",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://phoenix-99hp.github.io/blog-posts/",
+  "homepage": "https://phoenix-99hp.github.io/blog-posts",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
