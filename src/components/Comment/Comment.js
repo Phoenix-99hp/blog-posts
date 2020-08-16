@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import moment from "moment";
 import styles from "./Comment.module.css";
 import Spinner from "../Spinner";
-import Post from "../Post";
 
 const Comment = ({ currentPost, writeComment, setWriteComment, setCurrentPost }) => {
 
@@ -15,10 +14,6 @@ const Comment = ({ currentPost, writeComment, setWriteComment, setCurrentPost })
             setSpinner(false);
         }, 1000);
     }, [])
-
-    // useEffect(() => {
-
-    // }, [updated])
 
     const validate = ({ newComment, name }) => {
         const adjComment = newComment.trim();
@@ -61,22 +56,21 @@ const Comment = ({ currentPost, writeComment, setWriteComment, setCurrentPost })
                 .then(response => {
                     if (response.updated) {
                         setCurrentPost(response.updated);
-                        setUpdated(true);
-                        // window.location.href = "/blog-posts";
+                        window.location.href = "/blog-posts";
                     }
                     else if (response.specific) {
-                        window.location.href = `/blog-posts${response.specific}`;
+                        window.location.href = response.specific;
                     }
                     else {
-                        window.location.href = "/blog-posts/error";
+                        window.location.href = "/error";
                     }
                 })
                 .catch(error => {
-                    window.location.href = "/blog-posts/error";
+                    window.location.href = "/error";
                 })
         }
         else {
-            window.location.href = `blog-posts${specificError[0]}`;
+            window.location.href = specificError[0];
         }
     }
 
@@ -84,24 +78,21 @@ const Comment = ({ currentPost, writeComment, setWriteComment, setCurrentPost })
         spinner ?
             <Spinner />
             :
-            updated ?
-                <Post setSpinner={setSpinner} setCurrentPost={setCurrentPost} currentPost={currentPost} setWriteComment={setWriteComment} writeComment={writeComment} />
-                :
-                <div id={styles.mainContainer}>
-                    <div className={styles.postContainer}>
-                        <p className={`${styles.postInfo} ${styles.postTitle}`}>{currentPost.title}</p>
-                        <p className={`${styles.postBody} ${styles.postInfo}`}>{currentPost.text}</p>
-                        <p className={styles.postInfo}>Posted: {moment(currentPost.timestamp).format('L')}</p>
-                    </div>
-                    <div id={styles.inputContainer}>
-                        <input id={styles.commentUser} placeholder={"Your Name..."} />
-                    </div>
-                    <textarea id={styles.commentArea} placeholder={"Your Comment (200 characters or less)..."} />
-                    <div className={styles.submitCancelContainer}>
-                        <button id={styles.submitCommentBtn} onClick={(e) => { submitComment(e); setWriteComment(!writeComment); }}>Submit Comment</button>
-                        <button id={styles.cancelBtn} onClick={() => setWriteComment(!writeComment)}>Cancel</button>
-                    </div>
+            <div id={styles.mainContainer}>
+                <div className={styles.postContainer}>
+                    <p className={`${styles.postInfo} ${styles.postTitle}`}>{currentPost.title}</p>
+                    <p className={`${styles.postBody} ${styles.postInfo}`}>{currentPost.text}</p>
+                    <p className={styles.postInfo}>Posted: {moment(currentPost.timestamp).format('L')}</p>
                 </div>
+                <div id={styles.inputContainer}>
+                    <input id={styles.commentUser} placeholder={"Your Name..."} />
+                </div>
+                <textarea id={styles.commentArea} placeholder={"Your Comment (200 characters or less)..."} />
+                <div className={styles.submitCancelContainer}>
+                    <button id={styles.submitCommentBtn} onClick={(e) => { submitComment(e); setWriteComment(!writeComment); }}>Submit Comment</button>
+                    <button id={styles.cancelBtn} onClick={() => setWriteComment(!writeComment)}>Cancel</button>
+                </div>
+            </div>
     )
 }
 
