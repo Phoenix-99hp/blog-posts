@@ -59,18 +59,18 @@ const Comment = ({ currentPost, writeComment, setWriteComment, setCurrentPost })
                         window.location.href = "/blog-posts";
                     }
                     else if (response.specific) {
-                        window.location.href = response.specific;
+                        window.location.href = `/blog-posts${response.specific}`;
                     }
                     else {
-                        window.location.href = "/error";
+                        window.location.href = "/blog-posts/error";
                     }
                 })
                 .catch(error => {
-                    window.location.href = "/error";
+                    window.location.href = "/blog-posts/error";
                 })
         }
         else {
-            window.location.href = specificError[0];
+            window.location.href = `/blog-posts${specificError[0]}`;
         }
     }
 
