@@ -56,7 +56,7 @@ const Comment = ({ currentPost, writeComment, setWriteComment, setCurrentPost })
                 .then(response => {
                     if (response.updated) {
                         setCurrentPost(response.updated);
-                        window.location.href = "/";
+                        window.location.href = "/blog-posts";
                     }
                     else if (response.specific) {
                         window.location.href = response.specific;

@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 
 function App() {
   return (
-    <Router basename="/blog-posts">
+    <Router>
       <div className="App">
         <Route exact path="/"
           render={props => (<Posts {...props} />)} />
