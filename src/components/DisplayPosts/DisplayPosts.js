@@ -8,6 +8,7 @@ const DisplayPosts = () => {
     const [writeComment, setWriteComment] = useState(false);
     const [currentPost, setCurrentPost] = useState(null);
     const [spinner, setSpinner] = useState(true);
+
     useEffect(() => {
         fetch("https://nameless-plains-23983.herokuapp.com/api/posts", {
             // fetch("http://localhost:3001/api/posts", {

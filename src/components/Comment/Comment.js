@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import moment from "moment";
 import styles from "./Comment.module.css";
 import Spinner from "../Spinner";
+import Error from "../../pages/Error";
 
 const Comment = ({ currentPost, writeComment, setWriteComment, setCurrentPost }) => {
 
     const [spinner, setSpinner] = useState(true);
     const specificError = [];
+    const [error, setError] = useState(false);
 
     useEffect(() => {
         setTimeout(() => {
@@ -58,18 +60,22 @@ const Comment = ({ currentPost, writeComment, setWriteComment, setCurrentPost })
                         window.location.href = "/blog-posts";
                     }
                     else if (response.specific) {
-                        window.location.href = `/blog-posts${response.specific}`;
+                        setError(response.specific);
+                        // window.location.href = `/blog-posts${response.specific}`;
                     }
                     else {
-                        window.location.href = "/blog-posts/error";
+                        setError(true);
+                        // window.location.href = "/blog-posts/error";
                     }
                 })
                 .catch(error => {
-                    window.location.href = "/blog-posts/error";
+                    // window.location.href = "/blog-posts/error";
+                    setError(true);
                 })
         }
         else {
-            window.location.href = `/blog-posts${specificError[0]}`;
+            setError(specificError[0])
+            // window.location.href = `/blog-posts${specificError[0]}`;
         }
     }
 
@@ -77,21 +83,24 @@ const Comment = ({ currentPost, writeComment, setWriteComment, setCurrentPost })
         spinner ?
             <Spinner />
             :
-            <div id={styles.mainContainer}>
-                <div className={styles.postContainer}>
-                    <p className={`${styles.postInfo} ${styles.postTitle}`}>{currentPost.title}</p>
-                    <p className={`${styles.postBody} ${styles.postInfo}`}>{currentPost.text}</p>
-                    <p className={styles.postInfo}>Posted: {moment(currentPost.timestamp).format('L')}</p>
+            error ?
+                <Error specific={error} />
+                :
+                <div id={styles.mainContainer}>
+                    <div className={styles.postContainer}>
+                        <p className={`${styles.postInfo} ${styles.postTitle}`}>{currentPost.title}</p>
+                        <p className={`${styles.postBody} ${styles.postInfo}`}>{currentPost.text}</p>
+                        <p className={styles.postInfo}>Posted: {moment(currentPost.timestamp).format('L')}</p>
+                    </div>
+                    <div id={styles.inputContainer}>
+                        <input id={styles.commentUser} placeholder={"Your Name..."} />
+                    </div>
+                    <textarea id={styles.commentArea} placeholder={"Your Comment (200 characters or less)..."} />
+                    <div className={styles.submitCancelContainer}>
+                        <button id={styles.submitCommentBtn} onClick={(e) => { submitComment(e); setWriteComment(!writeComment); }}>Submit Comment</button>
+                        <button id={styles.cancelBtn} onClick={() => setWriteComment(!writeComment)}>Cancel</button>
+                    </div>
                 </div>
-                <div id={styles.inputContainer}>
-                    <input id={styles.commentUser} placeholder={"Your Name..."} />
-                </div>
-                <textarea id={styles.commentArea} placeholder={"Your Comment (200 characters or less)..."} />
-                <div className={styles.submitCancelContainer}>
-                    <button id={styles.submitCommentBtn} onClick={(e) => { submitComment(e); setWriteComment(!writeComment); }}>Submit Comment</button>
-                    <button id={styles.cancelBtn} onClick={() => setWriteComment(!writeComment)}>Cancel</button>
-                </div>
-            </div>
     )
 }
 
