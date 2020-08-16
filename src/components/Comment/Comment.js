@@ -21,11 +21,11 @@ const Comment = ({ currentPost, writeComment, setWriteComment, setCurrentPost })
         const adjName = name.trim();
         if ((/^[a-z0-9\s@\.\-,]+$/i.test(adjName) === false) || (adjName === " ")
             || (adjName.length === 0)) {
-            specificError.push("/error/characters");
+            specificError.push("characters");
             return false;
         }
         else if ((adjComment.length > 200) || (adjComment === " ")) {
-            specificError.push("/error/comment");
+            specificError.push("comment");
             return false;
         }
         else {
