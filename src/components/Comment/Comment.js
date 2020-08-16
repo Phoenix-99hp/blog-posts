@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import moment from "moment";
 import styles from "./Comment.module.css";
 import Spinner from "../Spinner";
+import Post from "../Post";
 
 const Comment = ({ currentPost, writeComment, setWriteComment, setCurrentPost }) => {
 
@@ -15,9 +16,9 @@ const Comment = ({ currentPost, writeComment, setWriteComment, setCurrentPost })
         }, 1000);
     }, [])
 
-    useEffect(() => {
+    // useEffect(() => {
 
-    }, [updated])
+    // }, [updated])
 
     const validate = ({ newComment, name }) => {
         const adjComment = newComment.trim();
@@ -61,7 +62,7 @@ const Comment = ({ currentPost, writeComment, setWriteComment, setCurrentPost })
                     if (response.updated) {
                         setCurrentPost(response.updated);
                         setUpdated(true);
-                        window.location.href = "/blog-posts";
+                        // window.location.href = "/blog-posts";
                     }
                     else if (response.specific) {
                         window.location.href = `/blog-posts${response.specific}`;
