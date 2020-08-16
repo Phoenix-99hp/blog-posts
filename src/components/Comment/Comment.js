@@ -49,17 +49,18 @@ const Comment = ({ currentPost, writeComment, setWriteComment, setCurrentPost })
                     "Content-type": "application/json"
                 },
                 body: JSON.stringify(data)
-
             })
                 .then(res => {
                     return res.json();
                 })
                 .then(response => {
                     if (response.updated) {
+                        console.log(response.updated);
                         setCurrentPost(response.updated);
                         window.location.href = "/blog-posts";
                     }
                     else if (response.specific) {
+                        console.log(response.specific);
                         setError(response.specific);
                         // window.location.href = `/blog-posts${response.specific}`;
                     }
