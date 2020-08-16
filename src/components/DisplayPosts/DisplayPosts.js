@@ -44,7 +44,7 @@ const DisplayPosts = () => {
     const showPosts = () => {
         return (
             writeComment ? <Comment setCurrentPost={setCurrentPost} currentPost={currentPost} writeComment={writeComment} setWriteComment={setWriteComment} />
-                : currentPost ? <Post setSpinner={setSpinner} setCurrentPost={setCurrentPost} currentPost={currentPost} setWriteComment={setWriteComment} writeComment={writeComment} /> : <NoPosts />
+                : currentPost ? <Post setCurrentPost={setCurrentPost} currentPost={currentPost} setWriteComment={setWriteComment} writeComment={writeComment} /> : <NoPosts />
         )
     }
 

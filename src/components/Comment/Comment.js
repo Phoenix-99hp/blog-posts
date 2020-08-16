@@ -6,6 +6,7 @@ import Spinner from "../Spinner";
 const Comment = ({ currentPost, writeComment, setWriteComment, setCurrentPost }) => {
 
     const [spinner, setSpinner] = useState(true);
+    const [updated, setUpdated] = useState(false);
     const specificError = [];
 
     useEffect(() => {
@@ -13,6 +14,10 @@ const Comment = ({ currentPost, writeComment, setWriteComment, setCurrentPost })
             setSpinner(false);
         }, 1000);
     }, [])
+
+    useEffect(() => {
+
+    }, [updated])
 
     const validate = ({ newComment, name }) => {
         const adjComment = newComment.trim();
@@ -55,6 +60,7 @@ const Comment = ({ currentPost, writeComment, setWriteComment, setCurrentPost })
                 .then(response => {
                     if (response.updated) {
                         setCurrentPost(response.updated);
+                        setUpdated(true);
                         window.location.href = "/blog-posts";
                     }
                     else if (response.specific) {
@@ -65,7 +71,7 @@ const Comment = ({ currentPost, writeComment, setWriteComment, setCurrentPost })
                     }
                 })
                 .catch(error => {
-                    console.log(error);
+                    window.location.href = "/blog-posts/error";
                 })
         }
         else {
@@ -77,21 +83,24 @@ const Comment = ({ currentPost, writeComment, setWriteComment, setCurrentPost })
         spinner ?
             <Spinner />
             :
-            <div id={styles.mainContainer}>
-                <div className={styles.postContainer}>
-                    <p className={`${styles.postInfo} ${styles.postTitle}`}>{currentPost.title}</p>
-                    <p className={`${styles.postBody} ${styles.postInfo}`}>{currentPost.text}</p>
-                    <p className={styles.postInfo}>Posted: {moment(currentPost.timestamp).format('L')}</p>
+            updated ?
+                <Post setSpinner={setSpinner} setCurrentPost={setCurrentPost} currentPost={currentPost} setWriteComment={setWriteComment} writeComment={writeComment} />
+                :
+                <div id={styles.mainContainer}>
+                    <div className={styles.postContainer}>
+                        <p className={`${styles.postInfo} ${styles.postTitle}`}>{currentPost.title}</p>
+                        <p className={`${styles.postBody} ${styles.postInfo}`}>{currentPost.text}</p>
+                        <p className={styles.postInfo}>Posted: {moment(currentPost.timestamp).format('L')}</p>
+                    </div>
+                    <div id={styles.inputContainer}>
+                        <input id={styles.commentUser} placeholder={"Your Name..."} />
+                    </div>
+                    <textarea id={styles.commentArea} placeholder={"Your Comment (200 characters or less)..."} />
+                    <div className={styles.submitCancelContainer}>
+                        <button id={styles.submitCommentBtn} onClick={(e) => { submitComment(e); setWriteComment(!writeComment); }}>Submit Comment</button>
+                        <button id={styles.cancelBtn} onClick={() => setWriteComment(!writeComment)}>Cancel</button>
+                    </div>
                 </div>
-                <div id={styles.inputContainer}>
-                    <input id={styles.commentUser} placeholder={"Your Name..."} />
-                </div>
-                <textarea id={styles.commentArea} placeholder={"Your Comment..."} />
-                <div className={styles.submitCancelContainer}>
-                    <button id={styles.submitCommentBtn} onClick={(e) => { submitComment(e); setWriteComment(!writeComment); }}>Submit Comment</button>
-                    <button id={styles.cancelBtn} onClick={() => setWriteComment(!writeComment)}>Cancel</button>
-                </div>
-            </div>
     )
 }
 

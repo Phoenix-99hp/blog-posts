@@ -23,7 +23,7 @@ const Error = ({ specific }) => {
                         specific === "characters" ? "The Name field must not be blank, and only the characters a-z 0-9 @ . - are allowed as part of the Name field." :
                             "Something went wrong."}
                     </p>
-                    <Link className={styles.link} to="/">Back</Link>
+                    <Link className={styles.link} to="/blog-posts/">Back</Link>
                 </div>}
         </Layout>
     )
