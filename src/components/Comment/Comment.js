@@ -6,7 +6,6 @@ import Spinner from "../Spinner";
 const Comment = ({ currentPost, writeComment, setWriteComment, setCurrentPost }) => {
 
     const [spinner, setSpinner] = useState(true);
-    const [updated, setUpdated] = useState(false);
     const specificError = [];
 
     useEffect(() => {

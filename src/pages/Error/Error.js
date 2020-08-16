@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import Layout from "../../components/Layout";
 import styles from "./Error.module.css";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Spinner from "../../components/Spinner";
 
-const Error = ({ specific }) => {
+const Error = () => {
     const [spinner, setSpinner] = useState(true);
+    const { specific } = useParams();
 
     useEffect(() => {
         setTimeout(() => {

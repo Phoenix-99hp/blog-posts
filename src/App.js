@@ -8,14 +8,9 @@ function App() {
     <Router basename="/blog-posts">
       <div className="App">
         <Switch>
-          <Route exact path="/error/characters"
-            render={props => (<Error {...props} specific={"characters"} />)} />
-          <Route exact path="/error/comment"
-            render={props => (<Error {...props} specific={"comment"} />)} />
-          <Route exact path="/error"
-            render={props => (<Error {...props} />)} />
-          <Route exact path="/"
-            render={props => (<Posts {...props} />)} />
+          <Route exact path="/error/:specific" component={Error} />
+          <Route exact path="/error" component={Error} />
+          <Route exact path="/" component={Posts} />
         </Switch>
       </div >
     </Router>
