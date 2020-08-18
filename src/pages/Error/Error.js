@@ -3,10 +3,11 @@ import Layout from "../../components/Layout";
 import styles from "./Error.module.css";
 import { Link } from "react-router-dom";
 import Spinner from "../../components/Spinner";
+import { useParams } from "react-router-dom";
 
-const Error = ({ specific }) => {
+const Error = () => {
     const [spinner, setSpinner] = useState(true);
-    // const { specific } = useParams();
+    const { specific } = useParams();
 
     useEffect(() => {
         setTimeout(() => {
@@ -24,7 +25,7 @@ const Error = ({ specific }) => {
                         specific === "characters" ? "The Name field must not be blank, and only the characters a-z 0-9 @ . - are allowed as part of the Name field." :
                             "Something went wrong."}
                     </p>
-                    <Link className={styles.link} to="/blog-posts/">Back</Link>
+                    <Link className={styles.link} to="/">Back</Link>
                 </div>}
         </Layout>
     )

@@ -2,13 +2,12 @@ import React, { useState, useEffect } from 'react';
 import moment from "moment";
 import styles from "./Comment.module.css";
 import Spinner from "../Spinner";
-import Error from "../../pages/Error";
+import { useHistory } from "react-router-dom";
 
 const Comment = ({ currentPost, writeComment, setWriteComment, setCurrentPost }) => {
-
     const [spinner, setSpinner] = useState(true);
     const specificError = [];
-    const [error, setError] = useState(false);
+    const history = useHistory();
 
     useEffect(() => {
         setTimeout(() => {
@@ -61,22 +60,18 @@ const Comment = ({ currentPost, writeComment, setWriteComment, setCurrentPost })
                     }
                     else if (response.specific) {
                         console.log(response.specific);
-                        setError(response.specific);
-                        // window.location.href = `/blog-posts${response.specific}`;
+                        history.push(`/error/${response.specific}`);
                     }
                     else {
-                        setError(true);
-                        // window.location.href = "/blog-posts/error";
+                        history.push("/error/general");
                     }
                 })
                 .catch(error => {
-                    // window.location.href = "/blog-posts/error";
-                    setError(true);
+                    history.push("/error/general");
                 })
         }
         else {
-            setError(specificError[0])
-            // window.location.href = `/blog-posts${specificError[0]}`;
+            history.push(`error/${specificError[0]}`)
         }
     }
 
@@ -84,24 +79,21 @@ const Comment = ({ currentPost, writeComment, setWriteComment, setCurrentPost })
         spinner ?
             <Spinner />
             :
-            error ?
-                <Error specific={error} />
-                :
-                <div id={styles.mainContainer}>
-                    <div className={styles.postContainer}>
-                        <p className={`${styles.postInfo} ${styles.postTitle}`}>{currentPost.title}</p>
-                        <p className={`${styles.postBody} ${styles.postInfo}`}>{currentPost.text}</p>
-                        <p className={styles.postInfo}>Posted: {moment(currentPost.timestamp).format('L')}</p>
-                    </div>
-                    <div id={styles.inputContainer}>
-                        <input id={styles.commentUser} placeholder={"Your Name..."} />
-                    </div>
-                    <textarea id={styles.commentArea} placeholder={"Your Comment (200 characters or less)..."} />
-                    <div className={styles.submitCancelContainer}>
-                        <button id={styles.submitCommentBtn} onClick={(e) => { submitComment(e); setWriteComment(!writeComment); }}>Submit Comment</button>
-                        <button id={styles.cancelBtn} onClick={() => setWriteComment(!writeComment)}>Cancel</button>
-                    </div>
+            <div id={styles.mainContainer}>
+                <div className={styles.postContainer}>
+                    <p className={`${styles.postInfo} ${styles.postTitle}`}>{currentPost.title}</p>
+                    <p className={`${styles.postBody} ${styles.postInfo}`}>{currentPost.text}</p>
+                    <p className={styles.postInfo}>Posted: {moment(currentPost.timestamp).format('L')}</p>
                 </div>
+                <div id={styles.inputContainer}>
+                    <input id={styles.commentUser} placeholder={"Your Name..."} />
+                </div>
+                <textarea id={styles.commentArea} placeholder={"Your Comment (200 characters or less)..."} />
+                <div className={styles.submitCancelContainer}>
+                    <button id={styles.submitCommentBtn} onClick={(e) => { submitComment(e); setWriteComment(!writeComment); }}>Submit Comment</button>
+                    <button id={styles.cancelBtn} onClick={() => setWriteComment(!writeComment)}>Cancel</button>
+                </div>
+            </div>
     )
 }
 

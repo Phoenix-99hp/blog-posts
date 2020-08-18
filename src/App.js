@@ -1,12 +1,16 @@
 import React from 'react';
 import Posts from "./pages/Posts";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Error from "./pages/Error";
 
 function App() {
   return (
     <Router basename="/blog-posts">
       <div className="App">
-        <Route exact path="/" component={Posts} />
+        <Switch>
+          <Route exact path="/" component={Posts} />
+          <Route path="/error/:specific" component={Error} />
+        </Switch>
       </div >
     </Router>
   );
