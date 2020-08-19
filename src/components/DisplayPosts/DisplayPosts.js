@@ -9,11 +9,11 @@ const DisplayPosts = () => {
     const [currentPost, setCurrentPost] = useState(null);
     const [spinner, setSpinner] = useState(true);
 
-    useEffect(() => {
-        setTimeout(() => {
-            setSpinner(false);
-        }, 1000);
-    }, [])
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         setSpinner(false);
+    //     }, 1000);
+    // }, [])
 
     useEffect(() => {
         fetch("https://nameless-plains-23983.herokuapp.com/api/posts", {

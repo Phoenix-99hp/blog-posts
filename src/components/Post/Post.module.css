@@ -97,11 +97,12 @@
     position: relative;
     text-align: center;
     justify-content: center;
+    width: 90%;
+    margin: 0 auto;
 }
 
  @media screen and (max-width: 300px) { 
     .commentBtn {
         width: 100%;
     }
-   
 }
