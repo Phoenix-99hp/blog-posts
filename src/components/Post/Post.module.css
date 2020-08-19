@@ -7,7 +7,7 @@
 }
 
 .postInfo:first-of-type {
-    padding-top: 30px;
+    padding-top: 49px;
 }
 
 .postInfo {
@@ -28,7 +28,7 @@
     cursor: pointer;
     padding: 5px;
     margin: 0;
-    width: fit-content;
+    width: 80px;
 }
 
 .nextBtn {

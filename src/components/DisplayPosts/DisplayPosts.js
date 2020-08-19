@@ -35,11 +35,11 @@ const DisplayPosts = () => {
     }, [])
 
     useEffect(() => {
-        // if (currentPost) {
-        setTimeout(() => {
-            setSpinner(false);
-        }, 1000);
-        // }
+        if (currentPost) {
+            setTimeout(() => {
+                setSpinner(false);
+            }, 1000);
+        }
     }, [currentPost])
 
     const showPosts = () => {
