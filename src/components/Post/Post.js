@@ -8,7 +8,7 @@ import NoPosts from "../NoPosts";
 const Post = ({ setCurrentPost, currentPost, setWriteComment, writeComment }) => {
 
     const [commentsAreActive, setCommentsAreActive] = useState(false);
-    const [spinner, setSpinner] = useState(false);
+    const [spinner, setSpinner] = useState(true);
 
     useEffect(() => {
         setTimeout(() => {
