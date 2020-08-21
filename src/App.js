@@ -5,7 +5,7 @@ import Error from "./pages/Error";
 
 function App() {
   return (
-    <Router basename="/blog-posts">
+    <Router>
       <div className="App">
         <Switch>
           <Route exact path="/" component={Posts} />
