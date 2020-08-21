@@ -14,7 +14,7 @@ const Post = ({ setCurrentPost, currentPost, setWriteComment, writeComment }) =>
         setTimeout(() => {
             setSpinner(false);
         }, 1000);
-    }, [currentPost, writeComment])
+    }, [currentPost])
 
     const nextPost = () => {
         setSpinner(true);
