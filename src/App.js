@@ -1,6 +1,6 @@
 import React from 'react';
 import Posts from "./pages/Posts";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import Error from "./pages/Error";
 
 function App() {
