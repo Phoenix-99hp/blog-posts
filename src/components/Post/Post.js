@@ -19,8 +19,7 @@ const Post = ({ setCurrentPost, currentPost, setWriteComment, writeComment }) =>
     const nextPost = () => {
         setSpinner(true);
         setCommentsAreActive(false);
-        fetch(`https://nameless-plains-23983.herokuapp.com/api/posts/${currentPost._id}/next`, {
-            // fetch(`http://localhost:3001/api/posts/${currentPost._id}/next`, {
+        fetch(`http://localhost:3001/api/posts/${currentPost._id}/next`, {
             method: "GET",
             mode: "cors"
         })
@@ -40,8 +39,7 @@ const Post = ({ setCurrentPost, currentPost, setWriteComment, writeComment }) =>
     const prevPost = () => {
         setSpinner(true);
         setCommentsAreActive(false);
-        fetch(`https://nameless-plains-23983.herokuapp.com/api/posts/${currentPost._id}/prev`, {
-            // fetch(`http://localhost:3001/api/posts/${currentPost._id}/prev`, {
+        fetch(`http://localhost:3001/api/posts/${currentPost._id}/prev`, {
             method: "GET",
             mode: "cors"
         })

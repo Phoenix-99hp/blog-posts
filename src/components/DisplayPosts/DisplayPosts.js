@@ -10,8 +10,7 @@ const DisplayPosts = () => {
     const [spinner, setSpinner] = useState(true);
 
     useEffect(() => {
-        fetch("https://nameless-plains-23983.herokuapp.com/api/posts", {
-            // fetch("http://localhost:3001/api/posts", {
+        fetch("http://localhost:3001/api/posts", {
             method: "GET",
             mode: "cors",
         })

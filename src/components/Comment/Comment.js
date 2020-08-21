@@ -40,8 +40,7 @@ const Comment = ({ currentPost, writeComment, setWriteComment, setCurrentPost })
             name: e.target.parentElement.previousElementSibling.previousElementSibling.children[0].value
         }
         if (validate(data)) {
-            fetch("https://nameless-plains-23983.herokuapp.com/api/posts", {
-                // fetch("http://localhost:3001/api/posts", {
+            fetch("http://localhost:3001/api/posts", {
                 method: "POST",
                 mode: "cors",
                 headers: {
