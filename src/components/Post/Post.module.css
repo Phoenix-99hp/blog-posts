@@ -1,108 +1,111 @@
 .postContainer {
-    max-width: 500px;
-    margin: 0 auto;
-    position: relative;
-    height: fit-content;
-    padding-bottom: 0px;
+	overflow-wrap: break-word;
+	white-space: pre-wrap;
+	max-width: 500px;
+	margin: 0 auto;
+	position: relative;
+	height: fit-content;
+	padding-bottom: 0px;
 }
 
 .postInfo:first-of-type {
-    padding-top: 49px;
+	padding-top: 49px;
 }
 
 .postInfo {
-    padding-top: 20px;
+	padding-top: 20px;
 }
 
 .postTitle {
-    font-size: 40px;
+	font-size: 40px;
 }
 
 .postBody {
-    font-size: 20px;
+	font-size: 20px;
 }
 
-.prevBtn, .nextBtn {
-    outline: none;
-    position: absolute;
-    cursor: pointer;
-    padding: 5px;
-    margin: 0;
-    width: 80px;
+.prevBtn,
+.nextBtn {
+	outline: none;
+	position: absolute;
+	cursor: pointer;
+	padding: 5px;
+	margin: 0;
+	width: 80px;
 }
 
 .nextBtn {
-    top: 0;
-    right: 0;
+	top: 0;
+	right: 0;
 }
 
 .prevBtn {
-    top: 0;
-    left: 0;
+	top: 0;
+	left: 0;
 }
 
 .commentBtn {
-    position: relative;
-    margin-top: 20px;
-    width: 50%;
-    background-color: rgb(145, 231, 16);
-    border: none;
-    border-radius: 10px;
-    padding: 5px;
-    outline: none;
-    cursor: pointer;
+	position: relative;
+	margin-top: 20px;
+	width: 50%;
+	background-color: rgb(145, 231, 16);
+	border: none;
+	border-radius: 10px;
+	padding: 5px;
+	outline: none;
+	cursor: pointer;
 }
 
 .commentBtn:hover {
-    opacity: 0.8;
+	opacity: 0.8;
 }
 
-.showCommentsBtn{
-    cursor: pointer;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-  }
+.showCommentsBtn {
+	cursor: pointer;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
 
 .commentInfo {
-    padding-top: 10px;
+	padding-top: 10px;
 }
 
 .commentBody {
-    font-size: 18px;
+	font-size: 18px;
 }
 
 .commentsActive {
-    border: 2px solid rgb(0, 174, 255);
-    text-align: center;
-    width: 500px;
-    margin: 0 auto;
-    margin-bottom: 10px;
+	border: 2px solid rgb(0, 174, 255);
+	text-align: center;
+	width: 500px;
+	margin: 0 auto;
+	margin-bottom: 10px;
 }
 
 .commentsInactive {
-  display: none;
+	display: none;
 }
 
 .paddingLast {
-    padding-bottom: 10px;
+	padding-bottom: 10px;
 }
 
 #commentName {
-    color: rgb(0, 174, 255);
+	color: rgb(0, 174, 255);
 }
 
 #mainContainer {
-    position: relative;
-    text-align: center;
-    justify-content: center;
-    width: 90%;
-    margin: 0 auto;
+	position: relative;
+	text-align: center;
+	justify-content: center;
+	width: 90%;
+	margin: 0 auto;
 }
 
- @media screen and (max-width: 300px) { 
-    .commentBtn {
-        width: 100%;
-    }
+@media screen and (max-width: 300px) {
+	.commentBtn {
+		width: 100%;
+	}
 }
